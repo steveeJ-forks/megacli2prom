@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import subprocess
 import re
@@ -299,11 +299,11 @@ def main():
         continue
 
 #  print json.dumps(out, indent=2, sort_keys=True)
-  for k,v in out.iteritems():
-    print("# HELP " + k + " " + v['help'])
-    print("# TYPE " + k + " " + v['type'])
+  for k,v in out.items():
+    print(("# HELP " + k + " " + v['help']))
+    print(("# TYPE " + k + " " + v['type']))
     for m in v['metrics']:
-      print ( str(k) + '{' + ', '.join([ "{}=\"{}\"".format(str(l),str(m['labels'][l])) for l in sorted(m['labels']) ]) + '} ' +  str(m['val']) )
+      print(( str(k) + '{' + ', '.join([ "{}=\"{}\"".format(str(l),str(m['labels'][l])) for l in sorted(m['labels']) ]) + '} ' +  str(m['val']) ))
 
 if __name__ == "__main__":
   main()
